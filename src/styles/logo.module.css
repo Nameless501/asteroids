@@ -1,0 +1,8 @@
+.logo {
+    color: var(--color_orange_base);
+    font-family: var(--font_secondary);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

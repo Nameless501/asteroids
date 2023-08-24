@@ -1,0 +1,101 @@
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.text-h1 {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.text-h2 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.text-h3 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.text-body-regular {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.text-body-small {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.text-body-micro {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.text-control-regular {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.text-control-small {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 1px;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-gray {
+    color: var(--color_gray)
+}
+
+.text-underline {
+    text-decoration-line: underline;
+}
+
+.gap-xs {
+    gap: 8px;
+}
+
+.gap-s {
+    gap: 10px;
+}
+
+.gap-m {
+    gap: 24px;
+}
+
+.gap-l {
+    gap: 32px;
+}
+
+.list {
+    list-style: none;
+}

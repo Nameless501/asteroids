@@ -1,0 +1,8 @@
+.label:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+.radio {
+    display: none;
+}

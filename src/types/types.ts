@@ -17,11 +17,28 @@ export type MissDistance = {
     kilometers: string;
 };
 
+export type RelativeVelocity = {
+    kilometers_per_hour: string;
+};
+
+export type OrbitBodies =
+    | 'Merc'
+    | 'Venus'
+    | 'Earth'
+    | 'Mars'
+    | 'Jupiter'
+    | 'Saturn'
+    | 'Uranus'
+    | 'Neptune'
+    | 'Moon';
+
 export type CloseApproachData = {
     close_approach_date: string;
+    close_approach_date_full: string;
     epoch_date_close_approach: number;
     miss_distance: MissDistance;
-    orbiting_body: string;
+    orbiting_body: OrbitBodies;
+    relative_velocity: RelativeVelocity;
 };
 
 export type OrbitalData = {

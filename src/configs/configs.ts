@@ -5,7 +5,8 @@ import { UNITS_PARAM_KEY, BASE_URL, API_KEY } from './constants';
 
 export const metaDataConfig: Metadata = {
     title: 'Armageddon',
-    description: '',
+    description:
+        'Онлайн-сервис по мониторингу и уничтожению опасных астероидов на основе данных API NASA',
 };
 
 export const passionOneFontConfig = Passion_One({
@@ -73,4 +74,28 @@ export const pluralBasketConfig = {
     few: 'астероида',
     many: 'астероидов',
     other: 'астероидов',
+};
+
+export const orbitBodiesIconsConfig = {
+    Merc: { src: '/mercury-icon.png', alt: 'Иконка: Планета Меркурий' },
+    Venus: { src: '/venus-icon.png', alt: 'Иконка: Планета Венера' },
+    Earth: { src: '/earth-icon.png', alt: 'Иконка: Планета Земля' },
+    Mars: { src: '/mars-icon.png', alt: 'Иконка: Планета Марс' },
+    Jupiter: { src: '/jupiter-icon.png', alt: 'Иконка: Планета Юпитер' },
+    Saturn: { src: '/saturn-icon.png', alt: 'Иконка: Планета Сатурн' },
+    Uranus: { src: '/uranus-icon.png', alt: 'Иконка: Планета Уран' },
+    Neptune: { src: '/neptune-icon.png', alt: 'Иконка: Планета Нептун' },
+    Moon: { src: '/moon-icon.png', alt: 'Иконка: Луна' },
+};
+
+export const orbitBodiesNamesConfig = {
+    Merc: 'Меркурий',
+    Venus: 'Венера',
+    Earth: 'Земля',
+    Mars: 'Марс',
+    Jupiter: 'Юпитер',
+    Saturn: 'Сатурн',
+    Uranus: 'Уран',
+    Neptune: 'Нептун',
+    Moon: 'Луна',
 };

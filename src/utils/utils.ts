@@ -1,11 +1,16 @@
 import { RU_LOCALE } from '@/configs/constants';
 
-export const getFormattedDate = (str: string): string => {
+export const getFormattedDate = (str: string, showTime = false): string => {
     const date = new Date(Date.parse(str));
     const month = date
         .toLocaleString(RU_LOCALE, { month: 'short' })
         .replace('.', '');
-    return `${date.getDate()} ${month} ${date.getFullYear()}`;
+    const formattedDate = `${date.getDate()} ${month} ${date.getFullYear()}`;
+    const time = date.toLocaleString(RU_LOCALE, {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+    return showTime ? `${formattedDate} ${time}` : formattedDate;
 };
 
 export const getLocalePlural = (number: number): Intl.LDMLPluralRule => {

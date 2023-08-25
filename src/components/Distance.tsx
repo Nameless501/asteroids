@@ -9,9 +9,10 @@ import { RU_LOCALE } from '@/configs/constants';
 interface IDistance {
     approachData: CloseApproachData;
     units: UnitsTypes;
+    rowGap?: boolean;
 }
 
-const Distance: FC<IDistance> = ({ approachData, units }) => {
+const Distance: FC<IDistance> = ({ approachData, units, rowGap = true }) => {
     const distance = Number.parseInt(approachData.miss_distance[units]);
 
     const formattedDistance = distance.toLocaleString(RU_LOCALE);
@@ -21,7 +22,9 @@ const Distance: FC<IDistance> = ({ approachData, units }) => {
 
     return (
         <div
-            className={`${utilsStyles['flex-column']} ${utilsStyles['gap-xs']}`}
+            className={`${utilsStyles['flex-column']} ${
+                rowGap && utilsStyles['gap-xs']
+            }`}
         >
             <p className={utilsStyles['text-body-regular']}>
                 {`${formattedDistance} ${distanceUnits}`}

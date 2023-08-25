@@ -1,7 +1,12 @@
 import { RU_LOCALE } from '@/configs/constants';
 
-export const getFormattedDate = (str: string, showTime = false): string => {
-    const date = new Date(Date.parse(str));
+export const getFormattedDate = (
+    value: string | number,
+    showTime = false
+): string => {
+    const date = new Date(
+        typeof value === 'string' ? Date.parse(value) : value
+    );
     const month = date
         .toLocaleString(RU_LOCALE, { month: 'short' })
         .replace('.', '');

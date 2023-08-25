@@ -24,7 +24,7 @@ const ApproachCard: FC<IApproachCard> = ({ approachData, units }) => {
                 </span>
                 <span className={utilsStyles['text-h3']}>
                     {getFormattedDate(
-                        approachData.close_approach_date_full,
+                        approachData.epoch_date_close_approach,
                         true
                     )}
                 </span>

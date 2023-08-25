@@ -6,9 +6,7 @@ import { routesConfig } from '@/configs/configs';
 const Logo: FC = () => {
     return (
         <Link href={routesConfig.getMainRoute()}>
-            <span className={styles.logo}>
-                ARMAGEDDON 2023
-            </span>
+            <span className={styles.logo}>ARMAGEDDON 2023</span>
         </Link>
     );
 };

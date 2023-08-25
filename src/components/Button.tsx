@@ -3,14 +3,20 @@ import styles from '@/styles/button.module.css';
 import utilsStyles from '@/styles/utils.module.css';
 
 interface IButton {
-    text: string,
-    place: 'card' | 'basket',
-    inBasket?: boolean,
-    handleClick?: () => unknown,
-    disabled?: boolean
+    text: string;
+    place: 'card' | 'basket';
+    inBasket?: boolean;
+    handleClick?: () => unknown;
+    disabled?: boolean;
 }
 
-const Button: FC<IButton> = ({ text, place, inBasket, handleClick, disabled = false }) => {
+const Button: FC<IButton> = ({
+    text,
+    place,
+    inBasket,
+    handleClick,
+    disabled = false,
+}) => {
     return (
         <button
             className={`
@@ -18,7 +24,10 @@ const Button: FC<IButton> = ({ text, place, inBasket, handleClick, disabled = fa
                 ${styles[`button_place_${place}`]}
                 ${inBasket && styles['button_state_in-basket']}
                 ${place === 'card' && utilsStyles['text-control-small']}
-                ${place === 'basket' && `${utilsStyles['text-control-regular']} ${utilsStyles['text-bold']}`}
+                ${
+                    place === 'basket' &&
+                    `${utilsStyles['text-control-regular']} ${utilsStyles['text-bold']}`
+                }
             `}
             onClick={handleClick}
             disabled={disabled}

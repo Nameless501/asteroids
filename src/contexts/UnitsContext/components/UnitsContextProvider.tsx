@@ -9,7 +9,9 @@ interface IUnitsContextProvider {
 export const UnitsContextProvider: FC<IUnitsContextProvider> = ({
     children,
 }) => {
-    const [currentUnits, setCurrentUnits] = useState<UnitsTypes>(UnitsTypes.kilometers);
+    const [currentUnits, setCurrentUnits] = useState<UnitsTypes>(
+        UnitsTypes.kilometers
+    );
 
     const handleUnitsChange = (value: UnitsTypes) => setCurrentUnits(value);
 

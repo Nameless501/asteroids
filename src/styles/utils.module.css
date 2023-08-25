@@ -73,7 +73,7 @@
 }
 
 .text-gray {
-    color: var(--color_gray)
+    color: var(--color_gray);
 }
 
 .text-underline {

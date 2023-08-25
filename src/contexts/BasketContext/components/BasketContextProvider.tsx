@@ -1,5 +1,5 @@
 import { FC, ReactNode, useState } from 'react';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import BasketContext from '@/contexts/BasketContext/context/BasketContext';
 import { IAsteroid, UnitsTypes } from '@/types/types';
 import { routesConfig } from '@/configs/configs';
@@ -17,18 +17,23 @@ export const BasketContextProvider: FC<IBasketContextProvider> = ({
     const [currentBasket, setCurrentBasket] = useState<IAsteroid[]>([]);
 
     const toggleBasketItem = (asteroid: IAsteroid): void => {
-        if(currentBasket.some(el => el.id === asteroid.id)) {
-            setCurrentBasket(cur => cur.filter(el => el.id !== asteroid.id));
+        if (currentBasket.some((el) => el.id === asteroid.id)) {
+            setCurrentBasket((cur) =>
+                cur.filter((el) => el.id !== asteroid.id)
+            );
         } else {
-            setCurrentBasket(cur => [...cur, asteroid]);
+            setCurrentBasket((cur) => [...cur, asteroid]);
         }
     };
 
     const submitBasket = (units: UnitsTypes) => {
-        sessionStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(currentBasket));
+        sessionStorage.setItem(
+            ORDER_STORAGE_KEY,
+            JSON.stringify(currentBasket)
+        );
         setCurrentBasket([]);
         router.push(routesConfig.getOrderRoute(units));
-    }
+    };
 
     return (
         <BasketContext.Provider

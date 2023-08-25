@@ -1,6 +1,5 @@
 .section {
     width: 402px;
-    gap: 24px;
 }
 
 .spinner {
@@ -19,5 +18,12 @@
 @media screen and (max-width: 767px) {
     .section {
         width: 279px;
+    }
+
+    .spinner {
+        margin: 35px 0 100px;
+        width: 30px;
+        height: 30px;
+        align-self: center;
     }
 }

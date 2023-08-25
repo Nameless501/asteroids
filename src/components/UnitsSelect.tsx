@@ -10,19 +10,23 @@ const UnitsSelect: FC = () => {
     return (
         <div className={utilsStyles['flex-row']}>
             <label
-                htmlFor='kilometers-units'
+                htmlFor="kilometers-units"
                 className={`
                     ${styles.label}
                     ${utilsStyles['text-control-regular']}
-                    ${units === UnitsTypes.kilometers ? utilsStyles['text-bold'] : utilsStyles['text-underline']}
+                    ${
+                        units === UnitsTypes.kilometers
+                            ? utilsStyles['text-bold']
+                            : utilsStyles['text-underline']
+                    }
                 `}
             >
                 в километрах
             </label>
             <input
-                type='radio'
-                id='kilometers-units'
-                name='units'
+                type="radio"
+                id="kilometers-units"
+                name="units"
                 className={styles.radio}
                 checked={units === UnitsTypes.kilometers}
                 value={UnitsTypes.kilometers}
@@ -34,19 +38,23 @@ const UnitsSelect: FC = () => {
             </span>
 
             <label
-                htmlFor='lunar-units'
+                htmlFor="lunar-units"
                 className={`
                     ${styles.label}
                     ${utilsStyles['text-control-regular']}
-                    ${units === UnitsTypes.lunar ? utilsStyles['text-bold'] : utilsStyles['text-underline']}
+                    ${
+                        units === UnitsTypes.lunar
+                            ? utilsStyles['text-bold']
+                            : utilsStyles['text-underline']
+                    }
                 `}
             >
                 в лунных орбитах
             </label>
             <input
-                type='radio'
-                id='lunar-units'
-                name='units'
+                type="radio"
+                id="lunar-units"
+                name="units"
                 className={styles.radio}
                 checked={units === UnitsTypes.lunar}
                 value={UnitsTypes.lunar}

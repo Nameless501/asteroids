@@ -13,18 +13,22 @@ const Basket: FC = () => {
     const { units } = useUnitsContext();
 
     return (
-        <section className={`${styles.section} ${utilsStyles['flex-column']} ${utilsStyles['gap-l']}`}>
+        <section
+            className={`${styles.section} ${utilsStyles['flex-column']} ${utilsStyles['gap-l']}`}
+        >
             <div className={utilsStyles['flex-column']}>
-                <h3 className={utilsStyles['text-h3']}>
-                    Корзина
-                </h3>
+                <h3 className={utilsStyles['text-h3']}>Корзина</h3>
                 <p className={utilsStyles['text-body-regular']}>
-                    {`${currentBasket.length} ${pluralBasketConfig[getLocalePlural(currentBasket.length)]}`}
+                    {`${currentBasket.length} ${
+                        pluralBasketConfig[
+                            getLocalePlural(currentBasket.length)
+                        ]
+                    }`}
                 </p>
             </div>
             <Button
-                place='basket'
-                text='Отправить'
+                place="basket"
+                text="Отправить"
                 handleClick={() => submitBasket(units)}
                 disabled={currentBasket.length < 1}
             />

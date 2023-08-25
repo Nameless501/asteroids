@@ -1,11 +1,11 @@
-import Main from '@/components/Main';
+import Asteroid from '@/components/Asteroid';
 import styles from '@/styles/layout.module.css';
 import utilsStyles from '@/styles/utils.module.css';
 
-export default function Home() {
+export default function AsteroidPage({ params }: { params: { id: string } }) {
     return (
         <main className={`${styles.content} ${utilsStyles['flex-row']}`}>
-            <Main />
+            <Asteroid id={params.id} />
         </main>
     );
 }

@@ -1,7 +1,7 @@
 import { UnitsTypes } from '@/types/types';
 import type { Metadata } from 'next';
 import { Passion_One } from 'next/font/google';
-import { UNITS_PARAM_KEY } from './constants';
+import { UNITS_PARAM_KEY, BASE_URL, API_KEY } from './constants';
 
 export const metaDataConfig: Metadata = {
     title: 'Armageddon',
@@ -18,11 +18,18 @@ export const routesConfig = {
     getMainRoute: () => '/',
     getOrderRoute: (units: UnitsTypes) => `/order?${UNITS_PARAM_KEY}=${units}`,
     getAsteroidRoute: (id: string) => '/asteroid/' + id,
-}
+};
+
+export const apiRoutesConfig = {
+    getFeedURL: (date: string): string =>
+        `${BASE_URL}/feed?api_key=${API_KEY}&start_date=${date}`,
+    getAsteroidUrl: (id: string): string =>
+        `${BASE_URL}/neo/${id}?api_key=${API_KEY}`,
+};
 
 export const asteroidImageConfig = {
-    src: "/asteroid.png",
-    alt: "Иконка - размер астероида",
+    src: '/asteroid.png',
+    alt: 'Иконка - размер астероида',
     width: {
         big: 36.6,
         small: 20,
@@ -35,10 +42,10 @@ export const asteroidImageConfig = {
 };
 
 export const earthImageConfig = {
-    src: "/earth.png",
-    alt: "Фотография земли из космоса",
-    sizes: "(max-width: 1024px) 377px",
-}
+    src: '/earth.png',
+    alt: 'Фотография земли из космоса',
+    sizes: '(max-width: 1024px) 377px',
+};
 
 export const pluralDistanceConfig = {
     [UnitsTypes.lunar]: {
@@ -66,4 +73,4 @@ export const pluralBasketConfig = {
     few: 'астероида',
     many: 'астероидов',
     other: 'астероидов',
-}
+};

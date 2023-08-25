@@ -24,16 +24,27 @@
     color: var(--color_red_smooth);
 }
 
-.button:hover {
-    cursor: pointer;
+.button_place_basket:disabled {
+    cursor: initial;
+    opacity: 0.6;
 }
 
-.button_place_card:hover {
+.button_place_card:active {
     background-color: var(--color_orange_base);
     color: var(--color_white);
 }
 
-.button_place_basket:disabled {
-    cursor: initial;
-    opacity: .6;
+@media screen and (min-width: 768px) {
+    .button:hover {
+        cursor: pointer;
+    }
+
+    .button_place_card:hover {
+        background-color: var(--color_orange_base);
+        color: var(--color_white);
+    }
+
+    .button_place_basket:disabled {
+        cursor: initial;
+    }
 }

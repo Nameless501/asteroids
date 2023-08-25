@@ -1,6 +1,10 @@
 import { FC, ReactNode } from 'react';
 import Image from 'next/image';
-import { earthImageConfig, metaDataConfig, passionOneFontConfig } from '@/configs/configs';
+import {
+    earthImageConfig,
+    metaDataConfig,
+    passionOneFontConfig,
+} from '@/configs/configs';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import styles from '@/styles/layout.module.css';

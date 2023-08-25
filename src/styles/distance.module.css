@@ -1,0 +1,8 @@
+.arrow {
+    width: 100%;
+    height: 4px;
+    background-image: url('../../public/arrow.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 10px;
+}

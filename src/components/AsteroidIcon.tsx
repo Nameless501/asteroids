@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { asteroidImageConfig } from '@/configs/configs';
 
 interface IAsteroidIcon {
-    size: 'big' | 'small',
+    size: 'big' | 'small';
 }
 
 const AsteroidIcon: FC<IAsteroidIcon> = ({ size }) => {

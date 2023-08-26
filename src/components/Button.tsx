@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import styles from '@/styles/button.module.css';
 import utilsStyles from '@/styles/utils.module.css';
 
@@ -6,7 +6,7 @@ interface IButton {
     text: string;
     place: 'card' | 'basket';
     inBasket?: boolean;
-    handleClick?: () => unknown;
+    handleClick?: (evt: SyntheticEvent) => unknown;
     disabled?: boolean;
 }
 

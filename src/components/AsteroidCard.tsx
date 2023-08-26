@@ -1,5 +1,5 @@
-import { FC, memo } from 'react';
-import Link from 'next/link';
+import { FC, SyntheticEvent, memo } from 'react';
+import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 import Distance from '@/components/Distance';
 import Diameter from '@/components/Diameter';
@@ -33,6 +33,8 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
     handleClick,
     inBasket,
 }) {
+    const router = useRouter();
+
     const diameter = Math.trunc(
         estimated_diameter.meters.estimated_diameter_max
     );
@@ -41,9 +43,15 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
 
     const formattedName = name.match(ASTEROID_NAME_REGEX);
 
+    const onClick = (evt: SyntheticEvent) => {
+        evt.stopPropagation();
+        if (handleClick) handleClick();
+    };
+
     return (
         <article
             className={`${styles.card} ${utilsStyles['flex-column']} ${utilsStyles['gap-xs']}`}
+            onClick={() => router.push(routesConfig.getAsteroidRoute(id))}
         >
             <h2 className={utilsStyles['text-h2']}>{date}</h2>
             <div
@@ -54,13 +62,11 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
                     size={diameter > ASTEROID_SIZE_THRESHOLD ? 'big' : 'small'}
                 />
                 <div className={utilsStyles['flex-column']}>
-                    <Link href={routesConfig.getAsteroidRoute(id)}>
-                        <p
-                            className={`${utilsStyles['text-body-regular']} ${utilsStyles['text-bold']} ${utilsStyles['text-underline']}`}
-                        >
-                            {formattedName}
-                        </p>
-                    </Link>
+                    <p
+                        className={`${utilsStyles['text-body-regular']} ${utilsStyles['text-bold']} ${utilsStyles['text-underline']}`}
+                    >
+                        {formattedName}
+                    </p>
                     <Diameter diameter={diameter} fontSize="small" />
                 </div>
             </div>
@@ -72,7 +78,7 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
                         place="card"
                         inBasket={inBasket}
                         text={inBasket ? 'В корзине' : 'Заказать'}
-                        handleClick={handleClick}
+                        handleClick={onClick}
                     />
                 )}
                 <HazardBadge

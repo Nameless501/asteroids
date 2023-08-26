@@ -28,7 +28,9 @@ const Order: FC = () => {
     }, [searchParams]);
 
     return (
-        <section className={`${styles.section} ${utilsStyles['flex-column']}`}>
+        <section
+            className={`${styles.section} ${utilsStyles['flex-column']} ${utilsStyles['gap-m']}`}
+        >
             <div
                 className={`${utilsStyles['flex-column']} ${utilsStyles['gap-xs']}`}
             >

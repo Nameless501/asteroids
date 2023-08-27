@@ -6,6 +6,9 @@
     position: sticky;
     top: 76px;
     align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 @media screen and (max-width: 767px) {

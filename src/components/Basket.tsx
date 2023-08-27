@@ -14,7 +14,7 @@ const Basket: FC = () => {
 
     return (
         <section
-            className={`${styles.section} ${utilsStyles['flex-column']} ${utilsStyles['gap-l']}`}
+            className={`${utilsStyles['gap-l']} ${styles.section}`}
         >
             <div className={utilsStyles['flex-column']}>
                 <h3 className={utilsStyles['text-h3']}>Корзина</h3>

@@ -1,12 +1,12 @@
 import { UnitsTypes } from '@/types/types';
 import type { Metadata } from 'next';
 import { Passion_One } from 'next/font/google';
-import { UNITS_PARAM_KEY, BASE_URL, API_KEY } from './constants';
+import { BASE_URL_NEO, BASE_URL_DONKI, API_KEY } from './constants';
 
 export const metaDataConfig: Metadata = {
-    title: 'Armageddon',
+    title: 'Space Monitor',
     description:
-        'Онлайн-сервис по мониторингу и уничтожению опасных астероидов на основе данных API NASA',
+        'Онлайн-сервис по мониторингу опасных астероидов на основе данных API NASA',
 };
 
 export const passionOneFontConfig = Passion_One({
@@ -17,15 +17,17 @@ export const passionOneFontConfig = Passion_One({
 
 export const routesConfig = {
     getMainRoute: () => '/',
-    getOrderRoute: (units: UnitsTypes) => `/order?${UNITS_PARAM_KEY}=${units}`,
     getAsteroidRoute: (id: string) => '/asteroid/' + id,
 };
 
 export const apiRoutesConfig = {
     getFeedURL: (date: string): string =>
-        `${BASE_URL}/feed?api_key=${API_KEY}&start_date=${date}`,
+        `${BASE_URL_NEO}/feed?api_key=${API_KEY}&start_date=${date}`,
     getAsteroidUrl: (id: string): string =>
-        `${BASE_URL}/neo/${id}?api_key=${API_KEY}`,
+        `${BASE_URL_NEO}/neo/${id}?api_key=${API_KEY}`,
+    getFlaresURL: (): string => `${BASE_URL_DONKI}/FLR?api_key=${API_KEY}`,
+    getHighSpeedStreamURL: (): string =>
+        `${BASE_URL_DONKI}/HSS?api_key=${API_KEY}`,
 };
 
 export const asteroidImageConfig = {
@@ -67,15 +69,6 @@ export const pluralDistanceConfig = {
     },
 };
 
-export const pluralBasketConfig = {
-    zero: 'астероидов',
-    two: 'астероида',
-    one: 'астероид',
-    few: 'астероида',
-    many: 'астероидов',
-    other: 'астероидов',
-};
-
 export const orbitBodiesIconsConfig = {
     Merc: { src: '/mercury-icon.png', alt: 'Иконка: Планета Меркурий' },
     Venus: { src: '/venus-icon.png', alt: 'Иконка: Планета Венера' },
@@ -98,4 +91,23 @@ export const orbitBodiesNamesConfig = {
     Uranus: 'Уран',
     Neptune: 'Нептун',
     Moon: 'Луна',
+};
+
+export const solarFlareIconConfig = {
+    src: '/solar-flare-icon.png',
+    alt: 'Солнечная вспышка',
+    width: 35,
+    height: 35,
+};
+
+export const geomagneticStormIconConfig = {
+    src: '/geomagnetic-storm-icon.png',
+    alt: 'Геомагнитная буря',
+    width: 30,
+    height: 30,
+};
+
+export const logoIconConfig = {
+    src: '/logo.png',
+    alt: 'Логотип',
 };

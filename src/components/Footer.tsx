@@ -4,10 +4,17 @@ import utilsStyles from '@/styles/utils.module.css';
 
 const Footer: FC = () => {
     return (
-        <footer className={`${styles.footer} ${utilsStyles['flex-row']}`}>
-            <p className={utilsStyles['text-control-regular']}>
-                © Все права и планета защищены
-            </p>
+        <footer
+            className={`${styles.footer} ${utilsStyles['flex-row']} ${utilsStyles['gap-l']}`}
+        >
+            <p className={utilsStyles['text-control-regular']}>© 2023</p>
+            <a
+                href="https://github.com/Nameless501/asteroids"
+                target="_blank"
+                className={utilsStyles['text-control-regular']}
+            >
+                GihHub
+            </a>
         </footer>
     );
 };

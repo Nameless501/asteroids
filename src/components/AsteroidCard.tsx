@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, memo } from 'react';
+import { FC, memo } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 import Distance from '@/components/Distance';
@@ -17,9 +17,6 @@ import { routesConfig } from '@/configs/configs';
 
 interface IAsteroidCard extends IAsteroid {
     units: UnitsTypes;
-    showButton: boolean;
-    handleClick?: () => void;
-    inBasket?: boolean;
 }
 
 const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
@@ -29,9 +26,6 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
     is_potentially_hazardous_asteroid,
     close_approach_data,
     units,
-    showButton,
-    handleClick,
-    inBasket,
 }) {
     const router = useRouter();
 
@@ -43,15 +37,9 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
 
     const formattedName = name.match(ASTEROID_NAME_REGEX);
 
-    const onClick = (evt: SyntheticEvent) => {
-        evt.stopPropagation();
-        if (handleClick) handleClick();
-    };
-
     return (
         <article
             className={`${styles.card} ${utilsStyles['flex-column']} ${utilsStyles['gap-xs']}`}
-            onClick={() => router.push(routesConfig.getAsteroidRoute(id))}
         >
             <h2 className={utilsStyles['text-h2']}>{date}</h2>
             <div
@@ -73,14 +61,13 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
             <div
                 className={`${utilsStyles['flex-row']} ${utilsStyles['gap-s']}`}
             >
-                {showButton && (
-                    <Button
-                        place="card"
-                        inBasket={inBasket}
-                        text={inBasket ? 'В корзине' : 'Заказать'}
-                        handleClick={onClick}
-                    />
-                )}
+                <Button
+                    place="card"
+                    text="Подробнее"
+                    handleClick={() =>
+                        router.push(routesConfig.getAsteroidRoute(id))
+                    }
+                />
                 <HazardBadge
                     isHazardous={is_potentially_hazardous_asteroid}
                     fontSize="small"

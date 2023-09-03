@@ -1,38 +1,23 @@
 import { FC } from 'react';
+import { useUnitsContext } from '@/contexts/UnitsContext';
 import AsteroidCard from '@/components/AsteroidCard';
 import utilsStyles from '@/styles/utils.module.css';
-import { IAsteroid, UnitsTypes } from '@/types/types';
+import { IAsteroid } from '@/types/types';
 
 interface IAsteroidsList {
     asteroidsData: IAsteroid[];
-    toggleBasketItem?: (asteroid: IAsteroid) => void;
-    currentBasket?: IAsteroid[];
-    showButton: boolean;
-    units: UnitsTypes;
 }
 
-const AsteroidsList: FC<IAsteroidsList> = ({
-    asteroidsData,
-    showButton,
-    toggleBasketItem,
-    units,
-    currentBasket = [],
-}) => {
+const AsteroidsList: FC<IAsteroidsList> = ({ asteroidsData }) => {
+    const { units } = useUnitsContext();
+
     return (
         <ul
             className={`${utilsStyles['flex-column']} ${utilsStyles['gap-m']} ${utilsStyles.list}`}
         >
             {asteroidsData.map((asteroid, ind) => (
                 <li key={asteroid.id + ind}>
-                    <AsteroidCard
-                        {...asteroid}
-                        units={units}
-                        handleClick={() => toggleBasketItem?.(asteroid)}
-                        inBasket={currentBasket.some(
-                            (el) => el.id === asteroid.id
-                        )}
-                        showButton={showButton}
-                    />
+                    <AsteroidCard {...asteroid} units={units} />
                 </li>
             ))}
         </ul>

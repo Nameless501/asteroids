@@ -20,10 +20,6 @@
     text-transform: uppercase;
 }
 
-.button_state_in-basket {
-    color: var(--color_red_smooth);
-}
-
 .button_place_basket:disabled {
     cursor: initial;
     opacity: 0.6;

@@ -1,19 +1,13 @@
-'use client';
-
 import { FC } from 'react';
-import { UnitsContextProvider } from '@/contexts/UnitsContext';
-import { BasketContextProvider } from '@/contexts/BasketContext';
 import AsteroidsFeed from '@/components/AsteroidsFeed';
-import Basket from '@/components/Basket';
+import Weather from '@/components/Weather';
 
 const Main: FC = () => {
     return (
-        <BasketContextProvider>
-            <UnitsContextProvider>
-                <AsteroidsFeed />
-                <Basket />
-            </UnitsContextProvider>
-        </BasketContextProvider>
+        <>
+            <AsteroidsFeed />
+            <Weather />
+        </>
     );
 };
 

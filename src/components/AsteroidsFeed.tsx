@@ -1,6 +1,7 @@
+'use client';
+
 import { FC, useState, useRef, useCallback } from 'react';
-import { useBasketContext } from '@/contexts/BasketContext';
-import { useUnitsContext } from '@/contexts/UnitsContext';
+import { UnitsContextProvider } from '@/contexts/UnitsContext';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import AsteroidsList from '@/components/AsteroidsList';
 import UnitsSelect from '@/components/UnitsSelect';
@@ -24,10 +25,6 @@ const AsteroidsFeed: FC = () => {
     const [isObservable, setIsObservable] = useState<boolean>(true);
 
     const [isError, setIsError] = useState<boolean>(false);
-
-    const { toggleBasketItem, currentBasket } = useBasketContext();
-
-    const { units } = useUnitsContext();
 
     const formatData = useCallback((data: IApiResponse): IAsteroid[] => {
         const formattedData = Object.values(data.near_earth_objects).flat();
@@ -93,34 +90,30 @@ const AsteroidsFeed: FC = () => {
     });
 
     return (
-        <section
-            className={`${styles.section} ${utilsStyles['flex-column']} ${utilsStyles['gap-m']}`}
-        >
-            <div
-                className={`${utilsStyles['flex-column']} ${utilsStyles['gap-xs']}`}
+        <UnitsContextProvider>
+            <section
+                className={`${styles.section} ${utilsStyles['flex-column']} ${utilsStyles['gap-m']}`}
             >
-                <h1 className={utilsStyles['text-h1']}>
-                    Ближайшие подлёты астероидов
-                </h1>
-                <UnitsSelect />
-            </div>
-            <AsteroidsList
-                asteroidsData={renderedData}
-                toggleBasketItem={toggleBasketItem}
-                currentBasket={currentBasket}
-                showButton={true}
-                units={units}
-            />
-            {isError ? (
-                <p className={utilsStyles['text-body-regular']}>
-                    {ERROR_MESSAGE}
-                </p>
-            ) : (
-                <div ref={listEndRef} className={styles.spinner}>
-                    <Spinner />
+                <div
+                    className={`${utilsStyles['flex-column']} ${utilsStyles['gap-xs']}`}
+                >
+                    <h1 className={utilsStyles['text-h1']}>
+                        Ближайшие подлёты астероидов
+                    </h1>
+                    <UnitsSelect />
                 </div>
-            )}
-        </section>
+                <AsteroidsList asteroidsData={renderedData} />
+                {isError ? (
+                    <p className={utilsStyles['text-body-regular']}>
+                        {ERROR_MESSAGE}
+                    </p>
+                ) : (
+                    <div ref={listEndRef} className={styles.spinner}>
+                        <Spinner />
+                    </div>
+                )}
+            </section>
+        </UnitsContextProvider>
     );
 };
 

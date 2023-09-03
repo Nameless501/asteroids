@@ -5,7 +5,6 @@ import utilsStyles from '@/styles/utils.module.css';
 interface IButton {
     text: string;
     place: 'card' | 'basket';
-    inBasket?: boolean;
     handleClick?: (evt: SyntheticEvent) => unknown;
     disabled?: boolean;
 }
@@ -13,7 +12,6 @@ interface IButton {
 const Button: FC<IButton> = ({
     text,
     place,
-    inBasket,
     handleClick,
     disabled = false,
 }) => {
@@ -22,7 +20,6 @@ const Button: FC<IButton> = ({
             className={`
                 ${styles.button} 
                 ${styles[`button_place_${place}`]}
-                ${inBasket && styles['button_state_in-basket']}
                 ${place === 'card' && utilsStyles['text-control-small']}
                 ${
                     place === 'basket' &&

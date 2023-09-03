@@ -1,4 +1,6 @@
-export const BASE_URL = 'https://api.nasa.gov/neo/rest/v1';
+export const BASE_URL_NEO = 'https://api.nasa.gov/neo/rest/v1';
+
+export const BASE_URL_DONKI = 'https://api.nasa.gov/DONKI';
 
 export const API_KEY = 's7tcTmIQGan11Yu6bky1MbhSqGuOf6gR8kpShbuf';
 

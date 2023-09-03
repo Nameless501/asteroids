@@ -5,7 +5,7 @@ import utilsStyles from '@/styles/utils.module.css';
 export default function Home() {
     return (
         <main
-            className={`${styles.content} ${utilsStyles['flex-row']} ${utilsStyles['align-start']}`}
+            className={`${styles.content} ${utilsStyles['flex-row']} ${utilsStyles['align-start']} ${utilsStyles['gap-m']}`}
         >
             <Main />
         </main>

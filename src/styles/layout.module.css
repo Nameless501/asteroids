@@ -9,7 +9,7 @@
         'header header header header'
         'image . content .'
         'footer footer footer footer';
-    row-gap: 9px;
+    row-gap: 32px;
     position: relative;
 }
 
@@ -20,6 +20,7 @@
 }
 
 .content {
+    padding-right: 16px;
     align-self: flex-start;
     grid-area: content;
 }
@@ -72,7 +73,6 @@
 @media screen and (max-width: 768px) {
     .layout {
         grid-template-columns: 48px minmax(24px, 0.4fr) auto 1fr;
-        row-gap: 17px;
     }
 
     .image-wrapper {

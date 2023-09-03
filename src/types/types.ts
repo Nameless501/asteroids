@@ -77,3 +77,14 @@ export interface IBasketContext {
     toggleBasketItem: (asteroid: IAsteroid) => void;
     submitBasket: (units: UnitsTypes) => void;
 }
+
+export interface IFlare {
+    flrID: string;
+    peakTime: string;
+    classType: string;
+}
+
+export interface IHighSpeedStream {
+    hssID: string;
+    eventTime: string;
+}

@@ -10,10 +10,6 @@ export const ASTEROID_SIZE_THRESHOLD = 500;
 
 export const ASTEROID_NAME_REGEX = /[0-9]{4} [A-Z0-9]{2,}/g;
 
-export const ORDER_STORAGE_KEY = 'order';
-
-export const UNITS_PARAM_KEY = 'units';
-
 export const RU_LOCALE = 'ru';
 
 export const ERROR_MESSAGE = 'Что-то пошло не так. Попробуйте еще раз позже.';

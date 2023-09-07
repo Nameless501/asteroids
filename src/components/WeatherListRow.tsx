@@ -1,24 +1,21 @@
 import { FC } from 'react';
 import WeatherIcon from '@/components/WeatherIcon';
 import utilsStyles from '@/styles/utils.module.css';
-import { IFlare, IHighSpeedStream } from '@/types/types';
+import { INotification, NotificationTypes } from '@/types/types';
 import {
     geomagneticStormIconConfig,
+    radiationEnhancementIconConfig,
     solarFlareIconConfig,
+    solarWindIconConfig,
 } from '@/configs/configs';
 import { getFormattedDate } from '@/utils/utils';
 
 interface IWeatherListRow {
-    flaresData: IFlare[];
-    highSpeedStreamData: IHighSpeedStream[];
+    notificationsData: INotification[];
     date: number;
 }
 
-const WeatherListRow: FC<IWeatherListRow> = ({
-    flaresData,
-    highSpeedStreamData,
-    date,
-}) => {
+const WeatherListRow: FC<IWeatherListRow> = ({ notificationsData, date }) => {
     const formattedDate = new Intl.DateTimeFormat('ru', {
         weekday: 'short',
         day: '2-digit',
@@ -28,18 +25,34 @@ const WeatherListRow: FC<IWeatherListRow> = ({
     const compareDates = (value: string | number): boolean =>
         getFormattedDate(value) === getFormattedDate(date);
 
-    const isSolarFlare = flaresData.some(({ peakTime }) =>
-        compareDates(peakTime)
+    const checkNotificationTypeAndDay = (
+        notification: INotification,
+        checkType: NotificationTypes
+    ): boolean => {
+        const { messageType, messageIssueTime } = notification;
+        return messageType === checkType && compareDates(messageIssueTime);
+    };
+
+    const isSolarFlare = notificationsData.some((notification) =>
+        checkNotificationTypeAndDay(notification, NotificationTypes.flr)
     );
 
-    const isGeomagneticStorm = highSpeedStreamData.some(({ eventTime }) =>
-        compareDates(eventTime)
+    const isGeomagneticStorm = notificationsData.some((notification) =>
+        checkNotificationTypeAndDay(notification, NotificationTypes.gst)
+    );
+
+    const isSolarWind = notificationsData.some((notification) =>
+        checkNotificationTypeAndDay(notification, NotificationTypes.cme)
+    );
+
+    const isRadiationEnhancement = notificationsData.some((notification) =>
+        checkNotificationTypeAndDay(notification, NotificationTypes.rbe)
     );
 
     return (
-        <div className={`${utilsStyles['flex-row']} ${utilsStyles['gap-s']}`}>
+        <div className={`${utilsStyles['flex-row']} ${utilsStyles['gap-xxs']}`}>
             <p
-                className={`${utilsStyles['text-body-regular']} ${utilsStyles['text-gray']}`}
+                className={`${utilsStyles['text-body-regular']} ${utilsStyles['text-gray']} ${utilsStyles['text-center']}`}
             >
                 {formattedDate}:
             </p>
@@ -47,6 +60,11 @@ const WeatherListRow: FC<IWeatherListRow> = ({
             <WeatherIcon
                 {...geomagneticStormIconConfig}
                 isActive={isGeomagneticStorm}
+            />
+            <WeatherIcon {...solarWindIconConfig} isActive={isSolarWind} />
+            <WeatherIcon
+                {...radiationEnhancementIconConfig}
+                isActive={isRadiationEnhancement}
             />
         </div>
     );

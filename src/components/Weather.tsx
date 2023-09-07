@@ -1,16 +1,11 @@
 import { FC } from 'react';
 import WeatherList from '@/components/WeatherList';
-import {
-    fetchHighSpeedStreamData,
-    fetchSolarFlareData,
-} from '@/actions/weatherData';
+import { fetchWeatherNotificationData } from '@/actions/weatherData';
 import styles from '@/styles/weather.module.css';
 import utilsStyles from '@/styles/utils.module.css';
 
 const Weather: FC = async () => {
-    const flaresData = await fetchSolarFlareData();
-
-    const highSpeedStreamData = await fetchHighSpeedStreamData();
+    const notificationsData = await fetchWeatherNotificationData();
 
     return (
         <section className={`${utilsStyles['gap-m']} ${styles.section}`}>
@@ -19,10 +14,7 @@ const Weather: FC = async () => {
             >
                 Погода в космосе за неделю
             </h2>
-            <WeatherList
-                flaresData={flaresData}
-                highSpeedStreamData={highSpeedStreamData}
-            />
+            <WeatherList notificationsData={notificationsData} />
         </section>
     );
 };

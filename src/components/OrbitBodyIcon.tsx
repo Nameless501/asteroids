@@ -10,10 +10,10 @@ interface IOrbitBodyIcon {
 const OrbitBodyIcon: FC<IOrbitBodyIcon> = ({ orbit }) => {
     return (
         <Image
-            src={orbitBodiesIconsConfig[orbit].src}
+            src={orbitBodiesIconsConfig[orbit]?.src}
             width={30}
             height={30}
-            alt={orbitBodiesIconsConfig[orbit].alt}
+            alt={orbitBodiesIconsConfig[orbit]?.alt}
         />
     );
 };

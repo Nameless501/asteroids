@@ -1,5 +1,5 @@
 .section {
-    width: 400px;
+    width: 370px;
 }
 
 .spinner {
@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 1023px) {
     .section {
-        width: 350px;
+        width: 325px;
     }
 }
 

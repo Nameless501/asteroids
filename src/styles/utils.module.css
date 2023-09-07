@@ -15,8 +15,20 @@
     align-items: flex-start;
 }
 
+.align-end {
+    align-items: flex-end;
+}
+
+.align-center {
+    align-items: center;
+}
+
 .justify-center {
     justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
 
 .align-self-center {
@@ -96,6 +108,10 @@
     text-align: center;
 }
 
+.gap-xxs {
+    gap: 5px;
+}
+
 .gap-xs {
     gap: 8px;
 }
@@ -110,6 +126,10 @@
 
 .gap-l {
     gap: 32px;
+}
+
+.gap-xl {
+    gap: 60px;
 }
 
 .list {

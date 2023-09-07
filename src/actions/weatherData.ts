@@ -1,21 +1,11 @@
 import { apiRoutesConfig } from '@/configs/configs';
-import { IFlare, IHighSpeedStream } from '@/types/types';
+import { INotification } from '@/types/types';
 
-export const fetchSolarFlareData = async (): Promise<IFlare[]> => {
-    try {
-        const res = await fetch(apiRoutesConfig.getFlaresURL());
-        const data = await res.json();
-        return data;
-    } catch (e) {
-        throw new Error();
-    }
-};
-
-export const fetchHighSpeedStreamData = async (): Promise<
-    IHighSpeedStream[]
+export const fetchWeatherNotificationData = async (): Promise<
+    INotification[]
 > => {
     try {
-        const res = await fetch(apiRoutesConfig.getHighSpeedStreamURL());
+        const res = await fetch(apiRoutesConfig.getWeatherNotificationsURL());
         const data = await res.json();
         return data;
     } catch (e) {

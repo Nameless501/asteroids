@@ -1,14 +1,13 @@
 import { FC } from 'react';
 import WeatherListRow from '@/components/WeatherListRow';
 import utilsStyles from '@/styles/utils.module.css';
-import { IFlare, IHighSpeedStream } from '@/types/types';
+import { INotification } from '@/types/types';
 
 interface IWeatherList {
-    flaresData: IFlare[];
-    highSpeedStreamData: IHighSpeedStream[];
+    notificationsData: INotification[];
 }
 
-const WeatherList: FC<IWeatherList> = ({ flaresData, highSpeedStreamData }) => {
+const WeatherList: FC<IWeatherList> = ({ notificationsData }) => {
     const today = new Date();
     const pastWeek = Array.from({ length: 7 }, (_, ind) =>
         new Date().setDate(today.getDate() - ind)
@@ -16,14 +15,13 @@ const WeatherList: FC<IWeatherList> = ({ flaresData, highSpeedStreamData }) => {
 
     return (
         <ul
-            className={`${utilsStyles['flex-column']} ${utilsStyles['gap-s']} ${utilsStyles.list}`}
+            className={`${utilsStyles['flex-column']} ${utilsStyles['gap-s']} ${utilsStyles['align-center']} ${utilsStyles.list}`}
         >
             {pastWeek.map((day, ind) => (
                 <li key={ind}>
                     <WeatherListRow
                         date={day}
-                        flaresData={flaresData}
-                        highSpeedStreamData={highSpeedStreamData}
+                        notificationsData={notificationsData}
                     />
                 </li>
             ))}

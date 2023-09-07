@@ -3,6 +3,13 @@ export enum UnitsTypes {
     lunar = 'lunar',
 }
 
+export enum NotificationTypes {
+    cme = 'CME',
+    gst = 'GST',
+    flr = 'FLR',
+    rbe = 'RBE',
+}
+
 export type Diameter = {
     estimated_diameter_min: number;
     estimated_diameter_max: number;
@@ -26,10 +33,10 @@ export type OrbitBodies =
     | 'Venus'
     | 'Earth'
     | 'Mars'
-    | 'Jupiter'
+    | 'Juptr'
     | 'Saturn'
     | 'Uranus'
-    | 'Neptune'
+    | 'Neptn'
     | 'Moon';
 
 export type CloseApproachData = {
@@ -72,19 +79,8 @@ export interface IUnitsContext {
     handleUnitsChange: (value: UnitsTypes) => void;
 }
 
-export interface IBasketContext {
-    currentBasket: IAsteroid[];
-    toggleBasketItem: (asteroid: IAsteroid) => void;
-    submitBasket: (units: UnitsTypes) => void;
-}
-
-export interface IFlare {
-    flrID: string;
-    peakTime: string;
-    classType: string;
-}
-
-export interface IHighSpeedStream {
-    hssID: string;
-    eventTime: string;
+export interface INotification {
+    messageType: NotificationTypes;
+    messageID: string;
+    messageIssueTime: string;
 }

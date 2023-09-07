@@ -25,9 +25,8 @@ export const apiRoutesConfig = {
         `${BASE_URL_NEO}/feed?api_key=${API_KEY}&start_date=${date}`,
     getAsteroidUrl: (id: string): string =>
         `${BASE_URL_NEO}/neo/${id}?api_key=${API_KEY}`,
-    getFlaresURL: (): string => `${BASE_URL_DONKI}/FLR?api_key=${API_KEY}`,
-    getHighSpeedStreamURL: (): string =>
-        `${BASE_URL_DONKI}/HSS?api_key=${API_KEY}`,
+    getWeatherNotificationsURL: (): string =>
+        `${BASE_URL_DONKI}/notifications?type=all&api_key=${API_KEY}`,
 };
 
 export const asteroidImageConfig = {
@@ -74,10 +73,10 @@ export const orbitBodiesIconsConfig = {
     Venus: { src: '/venus-icon.png', alt: 'Иконка: Планета Венера' },
     Earth: { src: '/earth-icon.png', alt: 'Иконка: Планета Земля' },
     Mars: { src: '/mars-icon.png', alt: 'Иконка: Планета Марс' },
-    Jupiter: { src: '/jupiter-icon.png', alt: 'Иконка: Планета Юпитер' },
+    Juptr: { src: '/jupiter-icon.png', alt: 'Иконка: Планета Юпитер' },
     Saturn: { src: '/saturn-icon.png', alt: 'Иконка: Планета Сатурн' },
     Uranus: { src: '/uranus-icon.png', alt: 'Иконка: Планета Уран' },
-    Neptune: { src: '/neptune-icon.png', alt: 'Иконка: Планета Нептун' },
+    Neptn: { src: '/neptune-icon.png', alt: 'Иконка: Планета Нептун' },
     Moon: { src: '/moon-icon.png', alt: 'Иконка: Луна' },
 };
 
@@ -86,10 +85,10 @@ export const orbitBodiesNamesConfig = {
     Venus: 'Венера',
     Earth: 'Земля',
     Mars: 'Марс',
-    Jupiter: 'Юпитер',
+    Juptr: 'Юпитер',
     Saturn: 'Сатурн',
     Uranus: 'Уран',
-    Neptune: 'Нептун',
+    Neptn: 'Нептун',
     Moon: 'Луна',
 };
 
@@ -103,6 +102,20 @@ export const solarFlareIconConfig = {
 export const geomagneticStormIconConfig = {
     src: '/geomagnetic-storm-icon.png',
     alt: 'Геомагнитная буря',
+    width: 30,
+    height: 30,
+};
+
+export const solarWindIconConfig = {
+    src: '/solar-wind-icon.png',
+    alt: 'Солнечный ветер',
+    width: 28,
+    height: 28,
+};
+
+export const radiationEnhancementIconConfig = {
+    src: '/space-radiation-icon.png',
+    alt: 'Усиление радиационного пояса',
     width: 30,
     height: 30,
 };

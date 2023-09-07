@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Diameter from '@/components/Diameter';
+import SizeScale from '@/components/SizeScale';
 import HazardBadge from '@/components/HazardBadge';
 import utilsStyles from '@/styles/utils.module.css';
 import { IAsteroid } from '@/types/types';
@@ -10,24 +10,19 @@ const AsteroidInfo: FC<IAsteroid> = ({
     is_potentially_hazardous_asteroid,
     orbital_data,
 }) => {
-    const diameter = Math.trunc(
-        estimated_diameter.meters.estimated_diameter_max
-    );
-
     return (
         <article
             className={`${utilsStyles['flex-column']} ${utilsStyles['gap-s']}`}
         >
+            <SizeScale {...estimated_diameter} />
             <div
                 className={`${utilsStyles['flex-row']} ${utilsStyles['gap-xs']}`}
             >
-                <p className={utilsStyles['text-h3']}>Диаметр:</p>
-                <Diameter diameter={diameter} fontSize="big" />
-            </div>
-            <div
-                className={`${utilsStyles['flex-row']} ${utilsStyles['gap-xs']}`}
-            >
-                <p className={utilsStyles['text-h3']}>Опасность:</p>
+                <p
+                    className={`${utilsStyles['text-h3']} ${utilsStyles['text-gray']}`}
+                >
+                    Опасность:
+                </p>
                 <HazardBadge
                     isHazardous={is_potentially_hazardous_asteroid}
                     fontSize="big"
@@ -36,7 +31,11 @@ const AsteroidInfo: FC<IAsteroid> = ({
             <div
                 className={`${utilsStyles['flex-row']} ${utilsStyles['gap-xs']}`}
             >
-                <p className={utilsStyles['text-h3']}>Впервые обнаружен:</p>
+                <p
+                    className={`${utilsStyles['text-h3']} ${utilsStyles['text-gray']}`}
+                >
+                    Впервые обнаружен:
+                </p>
                 <p className={utilsStyles['text-h3']}>
                     {getFormattedDate(orbital_data.first_observation_date)}
                 </p>

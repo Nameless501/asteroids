@@ -1,5 +1,14 @@
 .logo {
-    color: var(--color_orange_base);
+    background: linear-gradient(
+        to right,
+        var(--color_orange_base),
+        var(--color_blue)
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text {
     font-family: var(--font_secondary);
     font-size: 32px;
     font-style: normal;

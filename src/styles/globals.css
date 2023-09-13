@@ -4,9 +4,10 @@
     --color_white: rgb(255, 255, 255);
     --color_gray: rgb(227, 229, 229);
     --color_gray_dark: rgba(35, 37, 38, 1);
-    --color_orange_base: rgb(248, 102, 0);
+    --color_orange_base: rgb(238, 108, 44);
     --color_orange_smooth: rgb(248, 102, 0, 0.15);
     --color_red_smooth: rgb(245, 222, 217);
+    --color_blue: rgb(71, 82, 154);
 }
 
 body {

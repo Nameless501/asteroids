@@ -46,7 +46,7 @@ const Approaches: FC<IApproaches> = ({ closeApproaches }) => {
                     renderCard={(props) => (
                         <ApproachCard {...(props as CloseApproachData)} />
                     )}
-                    isDone={closeApproaches.length < renderedCards.length}
+                    isDone={closeApproaches.length <= renderedCards.length}
                     renderNextBatch={renderNextBatch}
                 />
             </UnitsContextProvider>

@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import AsteroidsFeed from '@/components/AsteroidsFeed';
+import Asteroids from '@/components/Asteroids';
 import Weather from '@/components/Weather';
 
 const Main: FC = () => {
     return (
         <>
-            <AsteroidsFeed />
+            <Asteroids />
             <Weather />
         </>
     );

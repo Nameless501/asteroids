@@ -1,17 +1,18 @@
 import { FC } from 'react';
+import { useUnitsContext } from '@/contexts/UnitsContext';
 import Distance from '@/components/Distance';
 import OrbitBodyIcon from '@/components/OrbitBodyIcon';
 import utilsStyles from '@/styles/utils.module.css';
-import { CloseApproachData, UnitsTypes } from '@/types/types';
+import { CloseApproachData } from '@/types/types';
 import { getFormattedDate } from '@/utils/utils';
 import { orbitBodiesNamesConfig } from '@/configs/configs';
 
-interface IApproachCard {
-    approachData: CloseApproachData;
-    units: UnitsTypes;
-}
+const ApproachCard: FC<CloseApproachData> = (props) => {
+    const { epoch_date_close_approach, relative_velocity, orbiting_body } =
+        props;
 
-const ApproachCard: FC<IApproachCard> = ({ approachData, units }) => {
+    const { units } = useUnitsContext();
+
     return (
         <div
             className={`${utilsStyles['flex-column']} ${utilsStyles['gap-xs']}`}
@@ -23,10 +24,7 @@ const ApproachCard: FC<IApproachCard> = ({ approachData, units }) => {
                     Дата:&nbsp;
                 </span>
                 <span className={utilsStyles['text-h3']}>
-                    {getFormattedDate(
-                        approachData.epoch_date_close_approach,
-                        true
-                    )}
+                    {getFormattedDate(epoch_date_close_approach, true)}
                 </span>
             </h3>
             <div
@@ -37,11 +35,7 @@ const ApproachCard: FC<IApproachCard> = ({ approachData, units }) => {
                 >
                     Расстояние:
                 </span>
-                <Distance
-                    approachData={approachData}
-                    units={units}
-                    rowGap={false}
-                />
+                <Distance approachData={props} units={units} rowGap={false} />
             </div>
             <div
                 className={`${utilsStyles['flex-row']} ${utilsStyles['gap-xs']}`}
@@ -54,9 +48,7 @@ const ApproachCard: FC<IApproachCard> = ({ approachData, units }) => {
                 <p
                     className={`${utilsStyles['text-text-body-regular']} ${utilsStyles['text-bold']}`}
                 >
-                    {parseInt(
-                        approachData.relative_velocity.kilometers_per_hour
-                    ) + ' км/ч'}
+                    {parseInt(relative_velocity.kilometers_per_hour) + ' км/ч'}
                 </p>
             </div>
             <div
@@ -70,10 +62,9 @@ const ApproachCard: FC<IApproachCard> = ({ approachData, units }) => {
                 <p
                     className={`${utilsStyles['text-text-body-regular']} ${utilsStyles['text-bold']}`}
                 >
-                    {orbitBodiesNamesConfig[approachData.orbiting_body] ??
-                        approachData.orbiting_body}
+                    {orbitBodiesNamesConfig[orbiting_body] ?? orbiting_body}
                 </p>
-                <OrbitBodyIcon orbit={approachData.orbiting_body} />
+                <OrbitBodyIcon orbit={orbiting_body} />
             </div>
         </div>
     );

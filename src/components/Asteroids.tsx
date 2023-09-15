@@ -2,10 +2,9 @@
 
 import { FC, useState, useRef, useCallback } from 'react';
 import { UnitsContextProvider } from '@/contexts/UnitsContext';
-import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import AsteroidsList from '@/components/AsteroidsList';
+import CardsList from '@/components/CardsFeed';
+import AsteroidCard from '@/components/AsteroidCard';
 import UnitsSelect from '@/components/UnitsSelect';
-import Spinner from './Spinner';
 import { IApiResponse, IAsteroid } from '@/types/types';
 import styles from '@/styles/feed.module.css';
 import utilsStyles from '@/styles/utils.module.css';
@@ -13,9 +12,7 @@ import { CARDS_COUNT, ERROR_MESSAGE } from '@/configs/constants';
 import { getCurrentFormattedDate } from '@/utils/utils';
 import { apiRoutesConfig } from '@/configs/configs';
 
-const AsteroidsFeed: FC = () => {
-    const listEndRef = useRef<HTMLDivElement>(null);
-
+const Asteroids: FC = () => {
     const nextDateRef = useRef<string>(getCurrentFormattedDate());
 
     const [asteroidsData, setAsteroidsData] = useState<IAsteroid[]>([]);
@@ -68,26 +65,27 @@ const AsteroidsFeed: FC = () => {
         }
     }, [saveData]);
 
-    const renderNextBatch = useCallback(() => {
+    const renderMoreData = useCallback(() => {
         const start = renderedData.length > 0 ? renderedData.length + 1 : 0;
         const end = start + CARDS_COUNT;
         setRenderedData((cur) => [...cur, ...asteroidsData.slice(start, end)]);
         setIsObservable(true);
     }, [renderedData, asteroidsData]);
 
-    const renderMoreData = useCallback(async () => {
+    const renderNextBatch = useCallback(async () => {
+        if (!isObservable) return;
+        setIsObservable(false);
         if (renderedData.length >= asteroidsData.length - CARDS_COUNT) {
             await fetchAsteroidsData();
         }
-        renderNextBatch();
-    }, [renderedData, asteroidsData, renderNextBatch, fetchAsteroidsData]);
-
-    useIntersectionObserver(listEndRef, () => {
-        if (isObservable) {
-            setIsObservable(false);
-            renderMoreData();
-        }
-    });
+        renderMoreData();
+    }, [
+        renderedData,
+        asteroidsData,
+        renderMoreData,
+        fetchAsteroidsData,
+        isObservable,
+    ]);
 
     return (
         <UnitsContextProvider>
@@ -102,19 +100,22 @@ const AsteroidsFeed: FC = () => {
                     </h1>
                     <UnitsSelect />
                 </div>
-                <AsteroidsList asteroidsData={renderedData} />
-                {isError ? (
+                <CardsList
+                    list={renderedData}
+                    renderCard={(props) => (
+                        <AsteroidCard {...(props as IAsteroid)} />
+                    )}
+                    isDone={isError}
+                    renderNextBatch={renderNextBatch}
+                />
+                {isError && (
                     <p className={utilsStyles['text-body-regular']}>
                         {ERROR_MESSAGE}
                     </p>
-                ) : (
-                    <div ref={listEndRef} className={styles.spinner}>
-                        <Spinner />
-                    </div>
                 )}
             </section>
         </UnitsContextProvider>
     );
 };
 
-export default AsteroidsFeed;
+export default Asteroids;

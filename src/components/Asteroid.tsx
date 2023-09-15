@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import AsteroidInfo from '@/components/AsteroidInfo';
-import ApproachesFeed from '@/components/ApproachesFeed';
+import Approaches from '@/components/Approaches';
 import utilsStyles from '@/styles/utils.module.css';
 import { ASTEROID_NAME_REGEX } from '@/configs/constants';
 import { fetchAsteroidData } from '@/actions/asteroidData';
@@ -39,9 +39,7 @@ export default async function Asteroid({ id }: { id: string }) {
                 </div>
                 <AsteroidInfo {...asteroidData} />
             </div>
-            <ApproachesFeed
-                closeApproaches={asteroidData.close_approach_data}
-            />
+            <Approaches closeApproaches={asteroidData.close_approach_data} />
         </section>
     );
 }

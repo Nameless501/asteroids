@@ -50,7 +50,6 @@
     }
 
     .image-wrapper {
-        margin-top: 6px;
         top: calc(50vh - 218px);
     }
 
@@ -65,7 +64,6 @@
     }
 
     .image-wrapper {
-        margin-top: 6px;
         margin-left: -150px;
     }
 }
@@ -76,7 +74,6 @@
     }
 
     .image-wrapper {
-        margin-top: -18px;
         margin-left: -256px;
     }
 }

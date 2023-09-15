@@ -1,5 +1,6 @@
 import { FC, memo } from 'react';
 import { useRouter } from 'next/navigation';
+import { useUnitsContext } from '@/contexts/UnitsContext';
 import Button from '@/components/Button';
 import Distance from '@/components/Distance';
 import Diameter from '@/components/Diameter';
@@ -7,7 +8,7 @@ import AsteroidIcon from '@/components/AsteroidIcon';
 import styles from '@/styles/card.module.css';
 import utilsStyles from '@/styles/utils.module.css';
 import HazardBadge from '@/components/HazardBadge';
-import { IAsteroid, UnitsTypes } from '@/types/types';
+import { IAsteroid } from '@/types/types';
 import { getFormattedDate } from '@/utils/utils';
 import {
     ASTEROID_NAME_REGEX,
@@ -15,19 +16,16 @@ import {
 } from '@/configs/constants';
 import { routesConfig } from '@/configs/configs';
 
-interface IAsteroidCard extends IAsteroid {
-    units: UnitsTypes;
-}
-
-const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
+const AsteroidCard: FC<IAsteroid> = memo(function Card({
     id,
     name,
     estimated_diameter,
     is_potentially_hazardous_asteroid,
     close_approach_data,
-    units,
 }) {
     const router = useRouter();
+
+    const { units } = useUnitsContext();
 
     const diameter = Math.trunc(
         estimated_diameter.meters.estimated_diameter_max
@@ -65,7 +63,9 @@ const AsteroidCard: FC<IAsteroidCard> = memo(function Card({
                     place="card"
                     text="Подробнее"
                     handleClick={() =>
-                        router.push(routesConfig.getAsteroidRoute(id))
+                        router.push(routesConfig.getAsteroidRoute(id), {
+                            scroll: false,
+                        })
                     }
                 />
                 <HazardBadge

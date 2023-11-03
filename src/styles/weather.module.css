@@ -12,8 +12,38 @@
     align-items: center;
 }
 
+.button {
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+    border: 0;
+    border-left: 2px solid var(--color_gray);
+    border-top: 2px solid var(--color_gray);
+    transform: rotate(45deg) translate(50%);
+}
+
 @media screen and (max-width: 767px) {
     .section {
-        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+        max-width: 100%;
+        border-radius: 24px 24px 0 0;
+        transform: translateY(calc(100% - 72px));
+        transition: transform 0.2s linear;
+    }
+
+    .section_opened {
+        transform: translateY(0);
+        transition: transform 0.2s linear;
+    }
+
+    .button_active {
+        border: 0;
+        border-bottom: 2px solid var(--color_gray);
+        border-right: 2px solid var(--color_gray);
+        transform: rotate(45deg) translateY(-50%);
     }
 }

@@ -13,3 +13,7 @@ export const ASTEROID_NAME_REGEX = /[0-9]{4} [A-Z0-9]{2,}/g;
 export const RU_LOCALE = 'ru';
 
 export const ERROR_MESSAGE = 'Что-то пошло не так. Попробуйте еще раз позже.';
+
+export const SCREEN_SIZE_TABLET = 1024;
+
+export const SCREEN_SIZE_MOBILE = 768;
